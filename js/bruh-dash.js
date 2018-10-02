@@ -118,13 +118,42 @@ global.bruhdash = {
   },
 
   // returns a slice of array with n elements dropped from the beignning
-  drop: function(){
+  drop: function(arr, n){
+    if (n === 0) {
+      return arr;
+    }
 
+    let index = n || 1;
+    let indexNew = 0;
+    let newArr = [];
+
+    while (arr[index]) {
+      newArr[indexNew] = arr[index];
+      index++;
+      indexNew++;
+    }
+
+    return newArr;
   },
 
   // returns a slice of array with n elements dropped from the end
-  dropRight: function() {
+  dropRight: function(arr, n) {
+    if (n === 0) {
+      return arr;
+    }
+  
+    let index = 0
+    let indexNew = 0;
+    let newArr = [];
+    let dropAmount = n || 1;
 
+    while (arr[index + dropAmount]) {
+      newArr[indexNew] = arr[index];
+      index++;
+      indexNew++;
+    }
+
+    return newArr;
   },
 
   // creates a slice of an array with n elements taken from the beginning
