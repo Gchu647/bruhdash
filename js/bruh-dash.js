@@ -30,23 +30,78 @@ global.bruhdash = {
   },
 
   // returns the index of the first matching element from left to right
-  indexOf: function () {
+  indexOf: function (arr, val) {
+    let i = 0;
+    let index = false;
+    
+    while (arr[i]) {
+      if (arr[i] === val) {
+        index = i;
+        break;
+      }
 
+      i ++;
+    }
+    
+    if(!index) {
+        index = -1;
+    }
+  
+    return index;
   },
 
   // returns the index of the first matching element from right to left
-  lastIndexOf: function () {
+  lastIndexOf: function (arr, val) {
+    let i = 0;
+    let index = false;
+    
+    while (arr[i]) {
+      if (arr[i] === val) {
+        index = i;
+      }
 
+      i ++;
+    }
+    
+    if(!index && index !== 0) {
+        index = -1;
+    }
+  
+    return index;
   },
 
   // returns an array with all elements except for the last element
-  initial: function () {
+  initial: function (arr) {
+    let i = 0;
+    let newArr = [];
 
+    while (arr[i+1]) {
+      newArr[i] = arr[i];
+      i++;
+    }
+
+    return newArr;
   },
   
   // returns an array with all falsey values removed
-  compact: function() {
+  compact: function(arr) {
+    let length = 0; // to caculate arr.length
+    let index = 0;
+    let indexNew = 0;
+    let newArr = [];
 
+    while (arr[length] !== undefined) {
+      length++;
+    }
+  
+    for ( let index  = 0; index < length; index ++) {
+      if (arr[index] !== null && arr[index] !== false && arr[index] !== 0 && arr[index] !== '' && !isNaN(arr[index])) {
+        newArr[indexNew] = arr[index];
+        indexNew ++;
+      }
+    }
+
+    return newArr;
   },
 
   // creates a slice of an array from the start index up to but not including the end index
