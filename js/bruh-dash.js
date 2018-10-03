@@ -86,7 +86,6 @@ global.bruhdash = {
   // returns an array with all falsey values removed
   compact: function(arr) {
     let length = 0; // to caculate arr.length
-    let index = 0;
     let indexNew = 0;
     let newArr = [];
 
@@ -201,8 +200,19 @@ global.bruhdash = {
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
-  fill: function() {
+  fill: function(arr, val, index, endIndex) {
+    index = index || 0;
 
+    while (arr[index]) { 
+      if (endIndex && index === endIndex) { // endIndex is not undefined
+        break;
+      } else {
+        arr[index] = val;
+        index ++;
+      }
+    }
+
+    return arr;
   },
 
   // removes all given values from an array
