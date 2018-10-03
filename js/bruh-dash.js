@@ -174,8 +174,29 @@ global.bruhdash = {
   },
 
   // creates a slice of an array with n elements taken from the end
-  takeRight: function () {
+  takeRight: function (arr, n) {
+    let index = 0;
+    let maxLength = 0;
+    let indexNew = 0;
+    let newArr = [];
 
+    while (arr[index]) { // checking for max length
+      maxLength = index + 1;
+      index ++;
+    }
+
+    if (n === undefined) {
+      return [arr[maxLength - 1]]; // return the last arr if n is undefined
+    } else if (n === 0) {
+      return []; // return empty arr if n is 0
+    }
+
+    for (let i = n-1; i < maxLength; i++) {
+      newArr[indexNew] = arr[i];
+      indexNew++;
+    }
+
+    return newArr;
   },
 
   // fills elements of array with specified value from the start index
