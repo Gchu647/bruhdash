@@ -157,8 +157,20 @@ global.bruhdash = {
   },
 
   // creates a slice of an array with n elements taken from the beginning
-  take: function () {
+  take: function (arr, n) {
+    if (n === undefined) {
+      return [arr[0]];
+    }
+    
+    let newArr = [];
 
+    for (let i = 0; i < n; i++) {
+      if (arr[i]) { // just in case n is greater then arr.length
+        newArr[i] = arr[i];
+      }
+    }
+
+    return newArr;
   },
 
   // creates a slice of an array with n elements taken from the end
