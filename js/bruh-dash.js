@@ -216,8 +216,24 @@ global.bruhdash = {
   },
 
   // removes all given values from an array
-  pull: function () {
-
+  pull: function (arr) { //2nd, 3rd params so on
+    let newArr = [];
+    let valMatch = false;
+    
+    for (let i = 0; i < arr.length; i++) { // loop arr
+       for (let j = 1; j < arguments.length; j++) { // true or false test
+         if (arr[i] === arguments[j]){
+           valMatch = true;
+         }
+       }
+      
+      if (!valMatch) { // if no matching val, add it to newArr
+        newArr.push(arr[i]);
+      }
+      valMatch = false;
+    }
+    
+    return newArr;
   },
 
   // removes elements of an array corresponding to the given indices
