@@ -236,9 +236,16 @@ global.bruhdash = {
     return newArr;
   },
 
-  // removes elements of an array corresponding to the given indices
-  pullAt: function () {
-
+  // removes elements of an array corresponding to the given indexes
+  pullAt: function (arr, indexes) {
+    let newArr = [];
+  
+    for (let i = 0; i < indexes.length; i ++) { // Use each index at least once
+      let index = indexes[i];
+      newArr.push(arr[index]);
+    }
+    
+    return newArr;
   },
 
   // creates an array excluding all the specified values
