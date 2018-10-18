@@ -249,13 +249,47 @@ global.bruhdash = {
   },
 
   // creates an array excluding all the specified values
-  without: function() {
-
+  without: function(arr) {
+    let newArr = [];
+    let match = false;
+    
+    for (let i = 0; i < arr.length; i++) { //Looping through all arr first
+      for (let j = 0; j < arguments.length; j++) { // Comparing with arguments
+        if (arr[i] === arguments[j]) {
+          match = true;
+        }
+      }
+      
+      if (!match) {
+        newArr.push(arr[i]);
+      }
+      
+      match = false;
+    }
+    
+    return newArr;
   },
 
   // returns an array with specified values excluded
-  difference: function() {
+  difference: function(arr, excludeArr) {
+    let newArr = [];
+    let match = false;
+    
+    for (let i = 0; i < arr.length; i++) { //Looping through all arr first
+      for (let j = 0; j < excludeArr.length; j++) { // Comparing with arguments
+        if (arr[i] === excludeArr[j]) {
+          match = true;
+        }
+      }
+      
+      if (!match) {
+        newArr.push(arr[i]);
+      }
+      
+      match = false;
+    }
 
+    return newArr;
   },
 
   /*******************
