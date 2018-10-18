@@ -298,12 +298,40 @@ global.bruhdash = {
 
   // creates an array of grouped elements
   zip: function () {
-
+    let newArr = [];
+   
+    // Make arrays inside of newArr
+    for (let i = 0; i < arguments[0].length; i++) {
+      newArr.push([]);
+    }
+    
+    // Push values in to newArr elements
+    for (let j = 0; j < arguments.length; j++) {
+      for (let k = 0; k < arguments[0].length; k++) {
+        newArr[k].push(arguments[j][k]);
+      }
+    }
+    
+    return newArr;
   },
 
   // creates an array of grouped elements in their pre-zip configuration
-  unzip: function () {
-
+  unzip: function (arr) {
+    let newArr = [];
+  
+    //Create arrays inside newArr
+    for (let i = 0; i < arr[0].length; i++) {
+      newArr.push([]);
+    }
+    
+    // Go through each index of each array
+    for (let j = 0; j < arr.length; j++) {
+      for (let k = 0; k < arr[0].length; k++) {
+        newArr[k].push(arr[j][k]);  
+      }
+    }
+    
+    return newArr;
   },
 
   // creates an array of elements into groups of length of specified size
