@@ -401,14 +401,46 @@ global.bruhdash = {
 
   // iterates over elements of a collection and returns all elements that the predicate returns truthy for
   // Note: this should work for arrays and objects
-  filter: function() {
-
+  filter: function(param1, funk) {
+    let newArr = [];
+  
+    if (Array.isArray(param1)) { // Check if it is an array
+      for (let i = 0; i < param1.length; i++) {
+        if (funk(param1[i])) { // Check if it pass the filler test
+          newArr.push(param1[i]);
+        }
+      }
+    }
+  
+    if (typeof param1 === 'object' && !Array.isArray(param1)) { // Check if it is an object
+      for (let key in param1) {
+        if (funk(param1[key])) { // Check if it pass the filler test
+          newArr.push(param1[key]);
+        }
+      }
+    }
+  
+    return newArr;
   },
 
   // Reduces the collection to a value which is the accumulated result of running each element
   // in the collection through an iteratee
   // Note: this should work for arrays and objects
-  reduce: function() {
-    
+  reduce: function(param1, funk) {
+    let total = 0;
+  
+    if (Array.isArray(param1)) { // Check if it is an array
+      for (let i = 0; i < param1.length; i++) {
+        total = funk(total, param1[i]);
+      }
+    }
+  
+    if (typeof param1 === 'object' && !Array.isArray(param1)) { // Check if it is an array
+      for (let key in param1) {
+        total = funk(total, param1[key]);
+      }
+    }
+  
+    return total;
   }
 };
