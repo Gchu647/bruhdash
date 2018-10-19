@@ -375,8 +375,24 @@ global.bruhdash = {
 
   // creates an array of values by running each element in collection thru the iteratee
   // Note: this should work for arrays and objects
-  map: function() {
-
+  map: function(param1, func) {
+    let newArr = [];
+  
+    // Test if it is array first
+    if (Array.isArray(param1)) {
+      for (let i = 0; i < param1.length; i++) {
+        newArr.push(func(param1[i]));
+      }
+    }
+    
+    // Test if it is Object
+    if (typeof param1 === 'object' && !Array.isArray(param1)) {
+      for (let key in param1) {
+        newArr.push(func(param1[key]));
+      }
+    }
+    
+    return newArr;
   },
 
   /*************************
